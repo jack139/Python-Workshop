@@ -28,6 +28,8 @@
 
 
 
+#### 分类
+
 - 理论计算机（图灵机）
 
 <img src="images/ws1_2.png" width="60%" />
@@ -54,6 +56,16 @@
 
 
 
+#### 操作系统
+
+- Unix (1971)
+- Windows (1985)
+- Linux (1991)
+- MacOS (2001), iOS (2007)
+- Android (2008)
+
+
+
 ### 3. 程序设计语言简介
 
 
@@ -66,8 +78,20 @@
 
 - 机器语言
 - 汇编语言
+
+<img src="images/ws1_6.png" width="80%" />
+
+
+
 - 中级语言
+
+<img src="images/ws1_7.gif" width="80%" />
+
+
+
 - 高级语言
+
+<img src="images/ws1_8.png" width="80%" />
 
 
 
