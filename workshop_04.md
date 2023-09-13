@@ -5,18 +5,29 @@
 ### for 循环
 
 ```python
-
 for letter in 'Python':
-    print(letter)
+    print(letter)   # 按字母输出： P、y、t、h、o、n
+```
 
 
+
+```python
 for i in [1, 2, 3, 4]:
-    print(i)
+    print(i)        # 输出 1、2、3、4
 
-for i in range(4):
-    print(i+1)
+for i in range(4):  # range() 生成 0～4
+    print(i+1)      # 输出 1、2、3、4
+
+for i in range(1, 5):   # range() 生成 1～4
+    print(i)            # 输出 1、2、3、4
+
+for i in range(4, 0, -1):   # range() 生成 4～1
+    print(i)                # 输出 4、3、2、1
+```
 
 
+
+```python
 fruits = ["banana", "apple", "mango"]
 
 for fruit in fruits:
@@ -25,6 +36,8 @@ for fruit in fruits:
 for i in range(len(fruits)):
     print (fruits[i])
 
+for i, fruit in enumerate(fruits): # enumerate生成 序号 和 值
+    print (i, fruit)
 ```
 
 
@@ -32,7 +45,6 @@ for i in range(len(fruits)):
 ### while 循环
 
 ```python
-
 i = 1
 while i < 10:   
     i += 1
@@ -40,8 +52,11 @@ while i < 10:
         continue
     else:
         print(i)    # 输出双数2、4、6、8、10
+```
 
 
+
+```python
 i = 1
 while 1:            # 循环条件为1必定成立： 无限循环
     i += 1
@@ -51,5 +66,4 @@ while 1:            # 循环条件为1必定成立： 无限循环
         continue
     else:
         print(i)    # 输出双数2、4、6、8、10
-
 ```
