@@ -47,7 +47,7 @@ print(a)
 
 ### 快速排序
 
-> 时间复杂度 O(nlogn)。由C.A.R.Hoare（托尼·霍尔）于1960时提出，他曾获1980年图灵奖。
+> 时间复杂度 O(nlogn)。由C.A.R.Hoare（托尼·霍尔）于1960年提出，他曾获1980年图灵奖。
 
 ```python
 def quick_sort(a):
