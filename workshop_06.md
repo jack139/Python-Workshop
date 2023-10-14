@@ -15,12 +15,10 @@
 ```python
 # 选择排序
 def select_sort(a):
-    for i in range(len(a)):
+    for i in range(len(a)-1):
         for j in range(i+1, len(a)):
             if a[i] < a[j]:
-                t = a[i]
-                a[i] = a[j]
-                a[j] = t
+                a[i], a[j] = a[j], a[i]
     return a
 ```
 
