@@ -56,15 +56,15 @@ def print_grid(s):
 
 
 # 回溯输出结果
-def print_result(start, end, grids, parent):
+def print_result(grids, target_idx):
     print("total grids=", len(grids))
-    #print("target idx=", grids.index(end))
-    p = [end]
-    while p[0]!=start:
-        _p = grids.index(p[0])
-        p = [parent[_p]] + p
+    print("target idx=", target_idx)
+    p = [target_idx]
+    while p[0]!=-1:
+        p = [grids[p[0]][1]] + p
     #print("parents:", p)
-    print_grid(p)
+    print("depth=", len(p)-1)
+    print_grid([grids[i][0] for i in p[1:]])
 
 
 # 测试
