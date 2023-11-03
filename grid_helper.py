@@ -20,7 +20,7 @@ def zero_pos(s):
     return None
 
 
-# 返回 s 的所有 下一步
+# 返回 布局s 的所有 下一步
 def moves(s):
     m = []
     row, col = zero_pos(s)
@@ -44,27 +44,30 @@ def moves(s):
     return m
 
 
-
+# 输出 一组 布局
 def print_grid(s):
     for i in range(3):
         l = []
         for n in range(len(s)):
             l.append(''.join([str(x) for x in s[n][i]]))
         print(' '.join(l))
-
     print()
 
 
-def print_result(end, grids, parent):
+
+# 回溯输出结果
+def print_result(start, end, grids, parent):
     print("total grids=", len(grids))
     print("target idx=", grids.index(end))
-    p = [grids.index(end)]
-    while p[0]!=-1:
-        p = [parent[p[0]]] + p
-    print("parents:", p)
-    print_grid([grids[i] for i in p[1:]])
+    p = [end]
+    while p[0]!=start:
+        _p = grids.index(p[0])
+        p = [parent[_p]] + p
+    #print("parents:", p)
+    print_grid(p)
 
 
+# 测试
 def test():
     s = [
         [1, 2, 3],
