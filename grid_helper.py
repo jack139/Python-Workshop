@@ -58,7 +58,7 @@ def print_grid(s):
 # 回溯输出结果
 def print_result(start, end, grids, parent):
     print("total grids=", len(grids))
-    print("target idx=", grids.index(end))
+    #print("target idx=", grids.index(end))
     p = [end]
     while p[0]!=start:
         _p = grids.index(p[0])
