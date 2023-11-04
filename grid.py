@@ -12,7 +12,7 @@ def bfs(start, end):
         queue_s = [grids[x][0] for x in queue]
         if end in queue_s:
             target_idx = queue[queue_s.index(end)]
-            print_result2(grids, target_idx) # 输出结果
+            print_result(grids, target_idx) # 输出结果
             return 1
 
         node = queue[0] # 先进先出

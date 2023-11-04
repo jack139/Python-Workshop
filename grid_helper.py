@@ -37,7 +37,7 @@ def moves(s):
         m.append(deepcopy(s))
         m[-1][row][col-1], m[-1][row][col] = m[-1][row][col], m[-1][row][col-1]
 
-    if col < 2: # 左
+    if col < 2: # 右
         m.append(deepcopy(s))
         m[-1][row][col+1], m[-1][row][col] = m[-1][row][col], m[-1][row][col+1]
 
