@@ -67,6 +67,34 @@ def print_result(grids, target_idx):
     print_grid([grids[i][0] for i in p[1:]])
 
 
+# 计算两个布局间的差异
+def grid_diff(s1, s2):
+    diff = 0
+    for i in range(len(s1)):
+        for j in range(len(s1[i])):
+            if s1[i][j] != s2[i][j]:
+                diff += 1
+    return diff
+
+
+# 计算两个布局间的距离
+def grid_distance(s1, s2):
+    # 返回 x 的位置
+    def x_pos(s, x):
+        for i in range(len(s)):
+            for j in range(len(s[i])):
+                if s[i][j]==x:
+                    return i, j
+        return None
+
+    dist = 0
+    for i in range(len(s1)):
+        for j in range(len(s1[i])):
+            i2, j2 = x_pos(s2, s1[i][j])
+            dist += (abs(i-i2) + abs(j-j2))
+    return dist
+
+
 # 测试
 def test():
     s = [

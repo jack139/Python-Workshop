@@ -77,9 +77,9 @@ def bfs(start, end):
     queue = [0] # 队列，是grid的索引
 
     while len(queue)>0:
-        queue_s = [grids[x][0] for x in queue]
-        if end in queue_s:
-            target_idx = queue[queue_s.index(end)]
+        grid_s = [x[0] for x in grids]
+        if end in grid_s:
+            target_idx = grid_s.index(end)
             print_result(grids, target_idx) # 输出结果
             return 1
 
@@ -87,7 +87,7 @@ def bfs(start, end):
         queue = queue[1:] # 删除已出队列的元素
 
         for i in moves(grids[node][0]):
-            if i not in queue_s: # 剔除已存在的布局
+            if i not in grid_s: # 剔除已存在的布局
                 grids.append((i, node))
                 queue.append(len(grids)-1)
     return 0
@@ -98,7 +98,6 @@ def bfs(start, end):
 ### 3. 深度优先搜索
 
 ```python
-# 深度度优先 Depth First Search 
 def dfs(start, end, max_depth=5):
     grids = [(start, -1, 0)] # 保存全部布局, (布局, 父节点, 深度)
     stack = [0] # 堆栈，第二元素为深度
@@ -129,9 +128,9 @@ def dfs(start, end, max_depth=5):
 
 ```python
 start = [
-    [1, 2, 3],
-    [4, 0, 6],
-    [7, 5, 8]
+    [7, 1, 3],
+    [2, 4, 5],
+    [8, 6, 0]
 ]
 
 end = [
@@ -142,8 +141,6 @@ end = [
 
 r = bfs(start, end)
 print(r)
-
-print("*"*80)
 
 r = dfs(start, end, 15)
 print(r)
