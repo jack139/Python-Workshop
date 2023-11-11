@@ -55,15 +55,20 @@ def print_grid(s):
         print(' '.join(l))
     print()
 
+# 回溯历史布局
+def find_history(grids, target_idx):
+    p = [target_idx]
+    while p[0]!=-1:
+        p = [grids[p[0]][1]] + p
+    return [grids[i][0] for i in p[1:]]
+
 # 回溯输出结果
 def print_result(grids, target_idx):
     print("total grids=", len(grids))
     print("target idx=", target_idx)
-    p = [target_idx]
-    while p[0]!=-1:
-        p = [grids[p[0]][1]] + p
-    print("depth=", len(p)-1)
-    print_grid([grids[i][0] for i in p[1:]])
+    history = find_history(grids, target_idx)
+    print("depth=", len(history))
+    print_grid(history)
 ```
 
 
@@ -86,6 +91,7 @@ def bfs(start, end):
         node = queue[0] # 先进先出
         queue = queue[1:] # 删除已出队列的元素
 
+        # 生成新布局
         for i in moves(grids[node][0]):
             if i not in grid_s: # 剔除已存在的布局
                 grids.append((i, node))
@@ -98,12 +104,15 @@ def bfs(start, end):
 ### 3. 深度优先搜索
 
 ```python
+# 深度度优先 Depth First Search 
 def dfs(start, end, max_depth=5):
     grids = [(start, -1, 0)] # 保存全部布局, (布局, 父节点, 深度)
     stack = [0] # 堆栈，第二元素为深度
 
     while len(stack)>0:
         stack_s = [grids[x][0] for x in stack]
+        #print_grid(stack_s)
+
         if end in stack_s:
             target_idx = stack[stack_s.index(end)]
             print_result(grids, target_idx) # 输出结果
@@ -115,8 +124,12 @@ def dfs(start, end, max_depth=5):
         if depth>max_depth: # 大于最大深度，则反弹
             continue
 
+        # 历史路径
+        history = find_history(grids, node)
+
+        # 生成新布局
         for i in moves(grids[node][0]):
-            if i not in stack_s: # 剔除已存在的布局
+            if i not in stack_s+history: # 剔除已存在的布局
                 grids.append((i, node, depth+1))
                 stack.append(len(grids)-1)
     return 0

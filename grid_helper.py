@@ -54,17 +54,21 @@ def print_grid(s):
     print()
 
 
+# 回溯历史布局
+def find_history(grids, target_idx):
+    p = [target_idx]
+    while p[0]!=-1:
+        p = [grids[p[0]][1]] + p
+    return [grids[i][0] for i in p[1:]]
+
 
 # 回溯输出结果
 def print_result(grids, target_idx):
     print("total grids=", len(grids))
     print("target idx=", target_idx)
-    p = [target_idx]
-    while p[0]!=-1:
-        p = [grids[p[0]][1]] + p
-    #print("parents:", p)
-    print("depth=", len(p)-1)
-    print_grid([grids[i][0] for i in p[1:]])
+    history = find_history(grids, target_idx)
+    print("depth=", len(history))
+    print_grid(history)
 
 
 # 计算两个布局间的差异

@@ -58,6 +58,7 @@ def greedy(start, end, cost_fn):
         node = queue[p] # 最小代价节点作为当前节点
         queue = queue[:p] + queue[p+1:]  # 删除已出队列的元素
 
+        # 生成新布局
         for i in moves(grids[node][0]):
             if i not in grid_s: # 剔除已存在的布局
                 grids.append((i, node))
@@ -96,6 +97,7 @@ def Astar(start, end, cost_fn):
         queue = queue[:p] + queue[p+1:]  # 删除已出队列的元素
         depth = grids[node][2]
 
+        # 生成新布局
         for i in moves(grids[node][0]):
             if i not in grid_s: # 剔除已存在的布局
                 grids.append((i, node, depth+1))

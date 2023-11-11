@@ -18,6 +18,7 @@ def bfs(start, end):
         node = queue[0] # 先进先出
         queue = queue[1:] # 删除已出队列的元素
 
+        # 生成新布局
         for i in moves(grids[node][0]):
             if i not in grid_s: # 剔除已存在的布局
                 grids.append((i, node))
@@ -47,8 +48,12 @@ def dfs(start, end, max_depth=5):
         if depth>max_depth: # 大于最大深度，则反弹
             continue
 
+        # 历史路径
+        history = find_history(grids, node)
+
+        # 生成新布局
         for i in moves(grids[node][0]):
-            if i not in stack_s: # 剔除已存在的布局
+            if i not in stack_s+history: # 剔除已存在的布局
                 grids.append((i, node, depth+1))
                 stack.append(len(grids)-1)
 
@@ -82,6 +87,7 @@ def greedy(start, end, cost_fn):
         node = queue[p] # 最小代价节点作为当前节点
         queue = queue[:p] + queue[p+1:]  # 删除已出队列的元素
 
+        # 生成新布局
         for i in moves(grids[node][0]):
             if i not in grid_s: # 剔除已存在的布局
                 grids.append((i, node))
@@ -118,6 +124,7 @@ def Astar(start, end, cost_fn):
         queue = queue[:p] + queue[p+1:]  # 删除已出队列的元素
         depth = grids[node][2]
 
+        # 生成新布局
         for i in moves(grids[node][0]):
             if i not in grid_s: # 剔除已存在的布局
                 grids.append((i, node, depth+1))
